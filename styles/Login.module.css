@@ -1,0 +1,53 @@
+.main {
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  background-image: url('../public/twitter.png');
+  
+}
+
+.loginContainer {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  padding: 20px;
+}
+
+.loginButtons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  color: white;
+  
+}
+
+
+.button {
+  width: fit-content;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover, .title a:focus, .title a:active {
+  text-decoration: underline;
+}

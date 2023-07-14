@@ -1,0 +1,123 @@
+.main {
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  background-color: rgb(64, 64, 103);
+  
+}
+
+.leftContainer {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  padding: 10px;
+  border-right: 1px solid white;
+}
+
+.bottomLeft {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-left;
+  align-items: left;
+  color: white;
+  width:fit-content
+  
+}
+
+.bottomLeftTexts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  color: white;
+  margin: 10px;
+  
+}
+
+.centerContainer {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  padding: 10px;
+  border-right: 1px white solid;
+}
+
+.centerUp {
+  height: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  border-bottom: white 1px solid;
+  
+}
+
+.centerDown {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  padding: 10px;
+}
+
+.rightContainer {
+  grid-row-start: 1;
+  grid-row-end: 1;
+  grid-column-start: 4;
+  grid-column-end: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  background-color: rgb(64, 63, 111);
+  color: white;
+  padding: 10px;
+}
+
+
+.rightDown {
+height: 95%;
+;
+
+}
+
+.button {
+  width: fit-content;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover, .title a:focus, .title a:active {
+  text-decoration: underline;
+}

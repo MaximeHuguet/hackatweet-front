@@ -1,0 +1,46 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  background-position: center center;
+  background-size: cover;
+  height: 25%;
+  width: 100%;
+  border-bottom: 1px solid white;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.tweetsHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  color: white;
+  height: 40%;
+}
+
+.tweetsHeader span {
+  margin: 5px;
+}
+
+.main p {
+  height: 60%;
+}
+
+.button {
+  width: fit-content;
+}
+
+.title {
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover, .title a:focus, .title a:active {
+  text-decoration: underline;
+}
