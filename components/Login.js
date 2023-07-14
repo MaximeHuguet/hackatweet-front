@@ -49,7 +49,7 @@ const handleSignUp = () => {
 			.then(data => {
 				if (data.result) {
           
-					dispatch(signup({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId }));
+					dispatch(signup({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId, image: data.image }));
 
           // redirige vers la page Home
           router.push('/home')
@@ -72,7 +72,7 @@ const handleSignIn = () => {
         console.log('test', data)
 
 				if (data.result) {
-					dispatch(signin({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId}));
+					dispatch(signin({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId, image: data.image}));
 
           // redirige vers la page Home
           router.push('/home')
@@ -86,7 +86,7 @@ const handleSignIn = () => {
 }
 let signUpModal =      
   <Modal open={signUpModalOpen} onCancel={closeSignUpModal} footer={null}>
-    <Image src="/../public/twitterIcon.png" alt="background" width={60} height={60}></Image>
+    <img src="/../public/twitterIcon.png" alt="background" width={60} height={60}></img>
     <p>Create your Hackatweet account</p>
     <div className={styles.loginButtons} style = {{padding: '10px'}}>
       <input onChange={(e) => setSignUpFirstname(e.target.value)} value={signUpFirstname} style={{ width: '50%'}} type="text" placeholder='Firstname' />
@@ -98,7 +98,7 @@ let signUpModal =
 
   let signInModal =      
   <Modal open={signInModalOpen} onCancel={closeSignInModal} footer={null}>
-    <Image src="/../public/twitterIcon.png" alt="background" width={60} height={60}></Image>
+    <img src="/../public/twitterIcon.png" alt="background" width={60} height={60}></img>
     <p>Connect to Hackatweet</p>
     <div className={styles.loginButtons} style = {{padding: '10px'}}>
       <input onChange={(e) => setSignInUsername(e.target.value)} value={signInUsername} style={{ width: '50%'}} type="text" placeholder='Username' />
@@ -112,7 +112,7 @@ let signUpModal =
       <div className={styles.main}>
         <div className={styles.loginContainer}>
           <div>
-            <Image src="/../public/twitterIcon.png" alt="background" width={120} height={120}></Image>
+            <img src="/../public/twitterIcon.png" alt="background" width={120} height={120}></img>
           </div>
           <h1>See what's happening</h1>
           <h2>Join Hackatweet today.</h2>

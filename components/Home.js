@@ -2,10 +2,16 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Tweet from './Tweet';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux'
+import {logoutUser} from '../reducers/users'
+import { useRouter } from 'next/router'
+
 
 
 function Home() {
+
+  const dispatch = useDispatch();
+  const router = useRouter();
 
   const [tweetsData, setTweetsData] = useState ([])
   const [tweetContent, setTweetContent] = useState()
@@ -20,11 +26,17 @@ useEffect(() => {
       .then(data => {
         console.log('data TWEETS', data.tweets)
         setTweetsData(data.tweets)
-        // console.log(tweetData)
       });
   }, []);
 
-  const tweets = tweetsData.map((data, i) => {
+  let sortedTweets = tweetsData.sort(function(a, b){
+    return a.content.localeCompare(b.content);
+  });
+  
+
+  console.log('sorted', sortedTweets)
+
+  const tweets = sortedTweets.map((data, i) => {
     return (
     <Tweet key={i} 
     content={data.content} 
@@ -56,7 +68,10 @@ let addTweet = () => {
       })
     })
       .then (response => response.json())
-      .then ((data)=> ({result: true, data: data.data}) )
+      .then ((data)=> {
+        console.log("data", data);
+        setTweetsData(data.data) 
+      })
   }
 }
 
@@ -66,22 +81,27 @@ let hashtag =
 <span>3 tweets</span>
 </div>
 
+const logout = () => {
+  dispatch(logoutUser())
+  router.push('/')
+}
+
 
   return (
     <div className={styles.main}>
         <div className={styles.leftContainer}>
             <div>
-                <Image src="/../public/twitterIcon.png" alt="background" width={60} height={60}></Image> 
+                <img src="/../public/twitterIcon.png" alt="background" width={60} height={60}></img> 
             </div>
             <div>
                 <div className={styles.bottomLeft}>
-                    <Image src="/../public/twitterIcon.png" alt="background" width={60} height={10}></Image>
+                 {user.image &&   <img src={user.image} alt="background" width={60} height={10}></img>}
                     <div className={styles.bottomLeftTexts}>
-                        <span>Firstname</span>  
-                        <span>Username</span>  
+                        <span>{user.firstname}</span>  
+                        <span>{user.username}</span>  
                     </div>
                 </div>
-                <button>Logout</button>
+                <button onClick={()=> logout()}>Logout</button>
             </div>
         </div>
         <div className={styles.centerContainer}>

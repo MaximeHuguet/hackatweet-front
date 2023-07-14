@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart, faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function Tweet(props) {
+  console.log(props);
   console.log(props.image);
     function like () {
     }
@@ -19,7 +20,7 @@ function Tweet(props) {
     <>
       <div className={styles.main}>
           <div className={styles.tweetsHeader}>
-            <Image src={props.image} alt="background" width={40} height={40}></Image>
+            <img src={props.image} alt="background" width={40} height={40}></img>
             <h3 style={{marginLeft: '10px', marginRight: '10px'}}>{props.firstname}</h3>
             <h4>@{props.username} -</h4>
             <span>{props.timeStamp}</span>

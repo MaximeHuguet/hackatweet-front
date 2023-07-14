@@ -20,11 +20,11 @@ function Hashtags() {
     <div className={styles.main}>
         <div className={styles.leftContainer}>
             <div>
-                <Image src="/../public/twitterIcon.png" alt="background" width={60} height={60}></Image> 
+                <img src="/../public/twitterIcon.png" alt="background" width={60} height={60}></img> 
             </div>
             <div>
                 <div className={styles.bottomLeft}>
-                    <Image src="/../public/twitterIcon.png" alt="background" width={60} height={10}></Image>
+                    <img src="/../public/twitterIcon.png" alt="background" width={60} height={10}></img>
                     <div className={styles.bottomLeftTexts}>
                         <span>Firstname</span>  
                         <span>Username</span>  

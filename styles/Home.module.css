@@ -81,6 +81,7 @@
   background-color: rgb(64, 63, 111);
   color: white;
   padding: 10px;
+  overflow: scroll;
 }
 
 .rightContainer {
@@ -100,7 +101,7 @@
 
 .rightDown {
 height: 95%;
-;
+overflow:scroll;
 
 }
 

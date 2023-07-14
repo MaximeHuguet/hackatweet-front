@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  value: { token: null, username: null, firstname: null, userId: null },
+  value: { token: null, username: null, firstname: null, userId: null, image: '/images/default_profile_400x400.png'},
 };
 
 export const usersSlice = createSlice({
@@ -14,6 +14,7 @@ export const usersSlice = createSlice({
     state.value.username = action.payload.username;
     state.value.firstname = action.payload.firstname;
     state.value.userId = action.payload.userId;
+    state.value.image = action.payload.image;
 
 
    },
@@ -22,10 +23,18 @@ export const usersSlice = createSlice({
     state.value.username = action.payload.username;
     state.value.firstname = action.payload.firstname;
     state.value.userId = action.payload.userId;
+    state.value.image = action.payload.image;
 
    },
+   logoutUser: (state) => {
+    state.value.token = null;
+    state.value.username = null;
+    state.value.firstname = null;
+    state.value.userId = null;
+    state.value.image = '/images/default_profile_400x400.png';
+   }
  },
 });
 
-export const { signin, signup } = usersSlice.actions;
+export const { signin, signup, logoutUser} = usersSlice.actions;
 export default usersSlice.reducer;
