@@ -2,57 +2,63 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 import Image from 'next/image';
 import Tweet from './Tweet';
+import { useDispatch, useSelector } from 'react-redux';
+
 
 function Home() {
 
-<<<<<<< HEAD
-// const [tweetData, setTweetData] = useState([]);
+  const [tweetsData, setTweetsData] = useState ([])
+  const [tweetContent, setTweetContent] = useState()
+  const user = useSelector((state) => {
+		return state.users.value })
 
 
-// useEffect(() => {
-//     fetch('http://localhost:3000/tweets')
-//       .then(response => response.json())
-//       .then(data => {
-//         console.log('data TWEETS', data.Tweets)
-//         setTweetData(data.tweets)
-//         // console.log(tweetData)
-//       });
-//   }, []);
-
-//   const tweets = tweetData.map((data, i) => {
-//     return <Tweet key={i} {...data} />
-//   });
-
-
-  const [tweetData, setTweetData] = useState([]);
-
-  useEffect(() => {
+//afficher les tweets
+useEffect(() => {
     fetch('http://localhost:3000/tweets')
       .then(response => response.json())
       .then(data => {
-        console.log('data TWEETS', data)
-        setTweetData(data.tweets)
-      })
-      .catch(error => {
-        console.error('Une erreur s\'est produite lors de la récupération des tweets:', error);
+        console.log('data TWEETS', data.tweets)
+        setTweetsData(data.tweets)
+        // console.log(tweetData)
       });
   }, []);
 
-  const tweets = tweetData.map((data, i) => {
-    return <Tweet key={i} {...data} />
+  const tweets = tweetsData.map((data, i) => {
+    return (
+    <Tweet key={i} 
+    content={data.content} 
+    username={data.userId.username} 
+    firstname={data.userId.firstname}
+    token={data.userId.token}
+    timeStamp={data.timestamp}
+    image={data.userId.image}
+    likes={data.likes}
+    hashtags={data.hashtags}
+    mentions={data.mentions}
+    />
+    )
   });
 
 
-
-
-=======
-
-let tweets =
-<>
-<Tweet />
-<Tweet />
-</>
->>>>>>> 68814eaff83fac95d7faa3c8b356800e64607d2a
+//nouveau tweet
+let addTweet = () => {
+  if (user.token) {
+    console.log("token", user.token);
+    fetch('http://localhost:3000/tweets/addTweet', {
+      method : "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify ( {
+        content: tweetContent,
+        userId: user.userId,
+        hashtags: 'test',
+        mentions: [],
+      })
+    })
+      .then (response => response.json())
+      .then ((data)=> ({result: true, data: data.data}) )
+  }
+}
 
 let hashtag =
 <div style= {{display: 'flex', flexDirection: 'column', justifyContent: 'right', margin: '20px'}}>
@@ -81,10 +87,10 @@ let hashtag =
         <div className={styles.centerContainer}>
             <div className={styles.centerUp}>
                 <h1>Home</h1>
-                <input type="text"  maxlength="280" placeholder="What's up?" style= {{padding: '10px', backgroundColor: 'rgb(74, 73, 111)'}}/>
+                <input onChange={(e) => setTweetContent(e.target.value)} value={tweetContent} type="text"  maxlength="280" placeholder="What's up?" style= {{padding: '10px', backgroundColor: 'rgb(74, 73, 111)'}}/>
                 <div style= {{display: 'flex', flexDirection: 'row', justifyContent: 'right', margin: '20px'}}>
                     <span style= {{margin: '8px'}}>9/280</span>
-                    <button>Tweet</button>
+                    <button onClick = {()=> addTweet()}>Tweet</button>
                 </div>
             </div>
             <div className={styles.centerDown}>

@@ -10,6 +10,7 @@ function Login() {
 
   const dispatch = useDispatch();
   const router = useRouter();
+  
 
 
 
@@ -48,7 +49,7 @@ const handleSignUp = () => {
 			.then(data => {
 				if (data.result) {
           
-					dispatch(signup({username: data.username, token: data.token, firstname: data.firstname }));
+					dispatch(signup({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId }));
 
           // redirige vers la page Home
           router.push('/home')
@@ -71,7 +72,7 @@ const handleSignIn = () => {
         console.log('test', data)
 
 				if (data.result) {
-					dispatch(signin({username: data.username, token: data.token, firstname: data.firstname}));
+					dispatch(signin({username: data.username, token: data.token, firstname: data.firstname, userId: data.userId}));
 
           // redirige vers la page Home
           router.push('/home')
